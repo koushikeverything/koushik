@@ -1,0 +1,14 @@
+{
+  "name": "koushik-marketplace",
+  "owner": {
+    "name": "Koushik"
+  },
+  "plugins": [
+    {
+      "name": "koushik",
+      "source": "./",
+      "description": "Build, evaluate, ship, operate, and scale durable AI agents on Eve using compound-engineering lifecycle principles.",
+      "version": "0.1.0"
+    }
+  ]
+}

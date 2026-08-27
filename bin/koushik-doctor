@@ -1,0 +1,99 @@
+#!/usr/bin/env bash
+# koushik doctor — validates versions and compatibility, not mere existence.
+# Never prints secret values. Exit 0 always (diagnostic, not a gate).
+set -u
+
+section() { printf '\n## %s\n' "$1"; }
+ok()   { printf 'ok    %s\n' "$1"; }
+warn() { printf 'warn  %s\n' "$1"; }
+miss() { printf 'miss  %s\n' "$1"; }
+
+printf '%s\n' '# koushik doctor'
+printf 'cwd: %s\n' "$(pwd)"
+
+section "git"
+if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+  ok "repository detected"
+  dirty=$(git status --porcelain 2>/dev/null | wc -l | tr -d ' ')
+  [ "$dirty" = "0" ] && ok "working tree clean" || warn "working tree has $dirty changed path(s)"
+  if git remote get-url origin >/dev/null 2>&1; then
+    ok "remote origin configured"
+  else
+    warn "no git remote — ship/PR stages need one (gh repo create can add it)"
+  fi
+else
+  miss "not a git repository — setup will offer git init"
+fi
+
+section "node"
+if command -v node >/dev/null 2>&1; then
+  nodev=$(node --version 2>/dev/null | sed 's/^v//')
+  major=${nodev%%.*}
+  ok "node $nodev"
+  # Eve currently documents a recent-Node requirement; verify against installed eve docs.
+  if [ "${major:-0}" -lt 20 ]; then
+    warn "node major $major is old — check the installed eve package's engine requirement"
+  fi
+else
+  miss "node not installed"
+fi
+pm='none'
+for candidate in pnpm bun npm yarn; do
+  command -v "$candidate" >/dev/null 2>&1 && { pm="$candidate"; break; }
+done
+[ "$pm" = "none" ] && miss "no package manager found" || ok "package manager: $pm"
+
+section "gh"
+if command -v gh >/dev/null 2>&1; then
+  ok "gh $(gh --version 2>/dev/null | head -n1 | awk '{print $3}')"
+  gh auth status >/dev/null 2>&1 && ok "gh authenticated" || warn "gh not authenticated — ship stage needs it"
+else
+  warn "gh CLI missing — PR automation unavailable"
+fi
+
+section "eve"
+if [ -f package.json ] && grep -Eq '"eve"[[:space:]]*:' package.json; then
+  ok "eve is a project dependency"
+  pkgv=$(node -e "try{console.log(require('./node_modules/eve/package.json').version)}catch(e){process.exit(1)}" 2>/dev/null)
+  [ -n "${pkgv:-}" ] && ok "installed eve package: $pkgv" || warn "eve declared but not installed — run the package manager install"
+  if [ -x node_modules/.bin/eve ]; then
+    cliv=$(node_modules/.bin/eve --version 2>/dev/null | head -n1)
+    ok "local eve CLI: ${cliv:-unknown}"
+    if [ -n "${pkgv:-}" ] && [ -n "${cliv:-}" ] && ! printf '%s' "$cliv" | grep -q "$pkgv"; then
+      warn "eve CLI/package version mismatch: CLI '$cliv' vs package '$pkgv'"
+    fi
+  else
+    warn "local eve CLI binary not found"
+  fi
+  [ -d node_modules/eve/docs ] && ok "installed eve docs present (node_modules/eve/docs) — prefer these over web docs" \
+    || warn "no in-package eve docs found — fall back to eve info / official docs"
+else
+  miss "eve not a dependency — build stage will scaffold it (npx eve@latest init)"
+fi
+
+section "project"
+[ -f STRATEGY.md ] && ok "STRATEGY.md" || miss "STRATEGY.md — run /koushik:strategy"
+[ -d agent ] && ok "agent/ directory" || miss "agent/ — no Eve runtime surface yet"
+[ -f agent/instructions.md ] && ok "agent/instructions.md" || true
+[ -d evals ] && ok "evals/ directory" || miss "evals/ — no behavioral evals yet"
+[ -d docs/plans ] && ok "docs/plans/" || miss "docs/ artifact tree — run /koushik:setup"
+[ -d docs/solutions ] && ok "docs/solutions/" || true
+[ -f .koushik/config.yaml ] && ok ".koushik/config.yaml" || miss ".koushik/config.yaml — run /koushik:setup"
+
+section "deployment"
+if [ -d .vercel ]; then ok "vercel project linked"; else warn "not linked to a deployment target (eve link)"; fi
+if [ -f .env.example ]; then
+  names=$(grep -Ec '^[A-Za-z_][A-Za-z0-9_]*=' .env.example 2>/dev/null || echo 0)
+  ok ".env.example declares $names env name(s) (values never checked or printed)"
+fi
+
+section "compound-engineering (optional)"
+found=no
+for d in "$HOME/.claude/plugins/cache" "$HOME/.claude/plugins/repos"; do
+  [ -d "$d" ] && find "$d" -maxdepth 4 -name plugin.json 2>/dev/null | xargs grep -l '"compound-engineering"' 2>/dev/null | head -n1 | grep -q . && found=yes && break
+done
+[ "$found" = "yes" ] && ok "compound-engineering plugin detected — interop available (optional only)" \
+  || ok "compound-engineering plugin not detected — koushik runs standalone (optional only)"
+
+printf '\n'
+exit 0
