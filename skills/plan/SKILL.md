@@ -9,9 +9,25 @@ argument-hint: "[requirements/architecture artifact, or blank for latest]"
 Read `${CLAUDE_PLUGIN_ROOT}/references/lifecycle.md`,
 `${CLAUDE_PLUGIN_ROOT}/references/artifacts.md` (plan contract),
 `${CLAUDE_PLUGIN_ROOT}/references/eve-runtime.md`, and
-`${CLAUDE_PLUGIN_ROOT}/references/ce-interop.md`. Inputs: the
-`requirements-only` artifact and the architecture artifact. Missing either →
-route back rather than inventing.
+`${CLAUDE_PLUGIN_ROOT}/references/ce-interop.md`.
+
+## 0. Output contract — an explicit invocation always produces a plan
+
+Never classify a direct invocation as "not a planning task" and route out
+empty-handed. Resolve the tier from bounded inline reads:
+
+- **Direct** — statable, doable, verifiable in one pass with no decision the
+  user would weigh: state the change in a few sentences and offer the handoff.
+- **Chat brief** — bounded work, at most one weighable decision, no risk
+  surface: deliver the brief in chat; no file, and no readiness stamp (a chat
+  brief must never be treated as implementation-ready downstream).
+- **Durable** — everything else, and always when: there is a risk surface
+  (auth, payments, migrations, external writes, tenancy, autonomy), the run
+  is orchestrated/non-interactive, or the user asked for a plan file.
+
+Uncertain → heavier tier. The Durable path expects the `requirements-only`
+and architecture artifacts; when missing for non-trivial scope, route back to
+brainstorm/architect rather than inventing product behavior.
 
 If Every's `ce-plan` is available and the user wants it, it may run as the
 guardrail planner; koushik still enforces the Eve-specific sections and the
@@ -43,8 +59,11 @@ Before flipping readiness, verify mechanically and record the result:
 - every R-ID maps to at least one unit;
 - the unit dependency graph is acyclic;
 - every STRATEGY.md invariant has an eval unit.
-Any gap: fix the plan or send the gap back to brainstorm/architect. Only then
-set `artifact_readiness: implementation-ready`.
+Any gap: fix the plan or send the gap back to brainstorm/architect. If
+research surfaced evidence that *invalidates* a settled decision, stop the
+write and surface it explicitly (lifecycle.md's settled-decisions rule) —
+never plan around it silently. Only then set
+`artifact_readiness: implementation-ready`.
 
 ## 4. Close
 

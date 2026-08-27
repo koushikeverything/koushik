@@ -36,10 +36,24 @@ the blocking suite must pass; red routes to debug/work, and thresholds are
 never lowered to pass** → test-drive (escalating taste to the human) →
 ship → READY-TO-MERGE PR.
 
+**Every stage boundary is a GATE, checked on evidence:** advance only on a
+valid completion result from the stage's artifacts; a blocked, malformed, or
+missing result stops the pipeline with the blocker reported — a blocked
+status outranks the mere presence of an artifact, and a stopped pipeline is
+never silently retried past its blocker. One narrow skip exists: simplify's
+*invocation* may be skipped for docs-only or trivial (≈under 10 changed
+lines) diffs — the skip is recorded, and no other stage is ever skipped.
+
 At each stage boundary, summarize: state reached, artifact produced,
 unresolved risk, next stage. Resolve repository facts yourself; stop only
-for genuinely consequential product ambiguity or a human gate from
+for genuinely consequential product ambiguity, an invalidated settled
+decision (surface it, never re-decide silently), or a human gate from
 lifecycle.md.
+
+**Residuals become durable before done.** Unapplied judgment-needed findings,
+recorded deviations, and accepted risks are written into the review artifact
+and the PR body (or a PR comment) before READY TO MERGE is declared — nothing
+divergent lives only in this conversation.
 
 ## 4. Hard stops
 

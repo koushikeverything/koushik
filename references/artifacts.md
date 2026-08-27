@@ -1,9 +1,18 @@
 # Durable artifact contracts
 
-Koushik prefers durable, inspectable files over transient chat context. All
-paths are repo-relative defaults; keep CE-compatible paths (`STRATEGY.md`,
-`docs/plans/`, `docs/solutions/`) so both knowledge corpora interoperate when
-Every's Compound Engineering plugin is also installed.
+Koushik prefers durable, inspectable files over transient chat context — but a
+file must be **earned**: by a decision a downstream consumer needs in ID'd
+form, or by the user asking for one. Small, well-bounded, low-ambiguity work
+ends in chat with no artifact ceremony; when the tier is uncertain, take the
+heavier one. All paths are repo-relative defaults; keep CE-compatible paths
+(`STRATEGY.md`, `docs/plans/`, `docs/solutions/`) so both knowledge corpora
+interoperate when Every's Compound Engineering plugin is also installed.
+
+Rules for every artifact write: date artifacts from the system clock, never
+from model memory. If `.koushik/config.yaml` sets `docs_root`, validate it —
+a repo-relative directory whose resolved path stays inside the repo and is
+neither the repo root nor under `.git/`; an invalid value is an error naming
+the key and value, never a silent fallback.
 
 ```text
 STRATEGY.md

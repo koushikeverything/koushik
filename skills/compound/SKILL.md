@@ -15,6 +15,20 @@ If Every's `ce-compound` is available it may handle generic solution-note
 mechanics; koushik still enforces the enforcement question and promotion
 ladder below.
 
+## 0. Ground rules
+
+- **One learning per run.** A session that produced several gets several
+  sequential runs — batching muddies root causes and produces junk-drawer
+  notes.
+- **Judge preconditions from the session, never interrogate.** The problem
+  must be solved, verified working, and non-trivial — decide that from the
+  evidence at hand. When the session plainly holds no such problem, write
+  nothing and report why.
+- **Write boundary.** Any research subagents write to scratch only; the
+  orchestrator alone writes the learning, `CONCEPTS.md`, and (with consent)
+  a discoverability line in an existing project instruction file — instruction
+  files are edited, never created. Nothing else in the tree is touched.
+
 ## 1. Separate signal from noise
 
 What actually happened; what caused it; what was incidental; is it already

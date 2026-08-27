@@ -16,10 +16,22 @@ If Every's `ce-brainstorm` is available and suitable, it may run the generic
 requirements engine (per `${CLAUDE_PLUGIN_ROOT}/references/ce-interop.md`);
 koushik then deepens the result with the agent lenses below.
 
+## 0. Right-size before any ceremony
+
+Classify the request from bounded inline reads before dispatching anything.
+**Lightweight** — small, well-bounded, low ambiguity — ends in a chat
+paragraph: the decisions stated, no file, no research fan-out. A file is
+earned only by a decision a downstream consumer needs in ID'd (R/A/F) form,
+or by the user asking for one. When the tier is uncertain, take the heavier
+one; a risk surface (auth, payments, external writes, tenant data, autonomy)
+always forces the full path.
+
 ## 1. Light repo research first
 
 Read the existing code, plans, and `docs/solutions/` touching this area.
-Never ask the user a factual question the repository answers.
+Never ask the user a factual question the repository answers, and never
+re-ask a decision the conversation or an accepted artifact already settled
+(lifecycle.md's settled-decisions rule).
 
 ## 2. One consequential question at a time
 

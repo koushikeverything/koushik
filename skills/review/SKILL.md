@@ -23,8 +23,22 @@ Eve-specific lenses on top.
 Use review-rubric.md's selection table against what the diff actually
 contains. Correctness always; each other lens only when warranted. Never all
 seven for a small diff; never skip safety when auth/writes/tenant data moved.
-Dispatch selected reviewer agents concurrently — they run read-only, in
-separate contexts, seeing the code but never the builder's reasoning.
+
+**Scope is not permission.** A PR number, URL, or branch argument selects
+*review scope only* — never check out, switch branches, or otherwise mutate
+the working tree to review it. Uncommitted work is reviewed from the checkout
+that holds it.
+
+**No blocking questions during the review pass.** Infer intent and scope from
+the arguments, git state, and accepted artifacts; note uncertainty in the
+coverage section of the report instead of stopping to ask. (`--triage`
+afterward is the deliberate interactive moment.)
+
+Dispatch selected reviewer agents as one concurrent foreground batch — they
+run read-only, in separate contexts, seeing the code but never the builder's
+reasoning. Collect every launched reviewer before synthesizing anything; a
+malformed or errored return counts as a failed reviewer (named in coverage),
+never as silent absence. Never detach review into a polled background job.
 
 ## 2. Merge and prioritize
 

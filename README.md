@@ -107,6 +107,14 @@ claude plugin validate . --strict
 ./bin/koushik-doctor
 ```
 
+## Roadmap (v0.2)
+
+Dogfood by building 2–3 real agents (research, approval-gated operational,
+multi-tenant); eval benchmark history; canary/release helpers; **cross-model
+adversarial review** (an independent peer review by a different model vendor,
+as CE's Stage 3d and Eve's Foreman both do — deferred until the dispatch
+plumbing earns its keep); optional enforcement hooks.
+
 ## Acknowledgements
 
 Inspired by Every's Compound Engineering methodology; builds applications on

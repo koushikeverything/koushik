@@ -44,7 +44,10 @@ For each unit in dependency order:
 When reality contradicts the plan (a file doesn't exist, a constraint was
 wrong), record the deviation next to the affected unit and continue if the
 intent is preserved; if the deviation changes accepted product behavior, stop
-and route back to plan/architect. Never weaken an approval, authorization, or
+and route back to plan/architect. When evidence *invalidates* a settled
+decision outright (infeasible, wrong-thing, destructive), stop and surface it
+per lifecycle.md — proceeding-and-flagging is only for deviations that
+preserve the decision's intent. Never weaken an approval, authorization, or
 eval threshold to make implementation easier.
 
 ## 3. Verify the whole

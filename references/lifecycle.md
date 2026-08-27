@@ -4,6 +4,23 @@ This file is the ONLY authoritative definition of the lifecycle states, the skil
 catalog, and the human gates. Skills reference this file; they must not restate
 the state machine (restated copies drift).
 
+## Global execution rules (apply to every skill)
+
+- **Fail closed on references.** If a required reference file cannot be read,
+  stop before the action it governs and report the blocker and recovery path —
+  never reconstruct the missing mechanism from memory.
+- **Gates are satisfied by evidence, not announcement.** A stage advances only
+  on valid completion evidence from the artifacts; a blocked or malformed
+  result outranks the mere presence of an artifact. Announcing a route or
+  rendering a plan is not completing it.
+- **Report outcomes, not machinery.** User-facing text names what the user
+  recognizes — a PR, a finding, an eval, a state — never internal dispatch
+  bookkeeping, subagent plumbing, or setup narration.
+- **Settled decisions stay settled.** Never re-ask a decision the conversation
+  or an accepted artifact already carries. When new evidence *invalidates* a
+  settled decision (infeasible, wrong-thing, destructive), stop and surface it
+  to the user explicitly — never silently re-decide either way.
+
 ## State machine
 
 Use these states to decide what is ready and what should happen next. Never treat
