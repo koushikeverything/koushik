@@ -36,9 +36,10 @@ rule that critical invariants are enforced by capability, not prompt prose.
 ## 4. Record project configuration
 
 Create or update `.koushik/config.yaml` (never secrets):
-- `agent_native_level`: detect per lifecycle.md's table — what access does
-  this environment actually have (browser? gh auth? production logs? deploy)?
-  Record the level and what evidence supports it.
+- `agent_native_level`: the NUMERIC level `1`–`4` per lifecycle.md's table —
+  detect what access this environment actually has (browser? gh auth?
+  production logs? deploy) and record the number plus the evidence lines
+  that support it.
 - `ce_interop`: whether Every's compound-engineering plugin is detected
   (doctor reports this). Mark `optional` either way.
 - `docs_root` if the user relocates artifacts.
