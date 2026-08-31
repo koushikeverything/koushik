@@ -96,7 +96,9 @@ Deploy: `eve link` then `eve deploy` (Vercel), or self-host (documented).
   **conversation-scoped** — it dies with the session.
 - Cross-session memory belongs in an application-owned, principal-scoped
   external store (see `docs/patterns/multi-tenant-memory.md` in the installed
-  docs). Never abuse `defineState` for it.
+  docs), or Eve's bounded `fileMemory()` provider (added ~0.45.2:
+  scope-partitioned, recalled-context budget, model-facing save/remove
+  tools — verify in installed docs). Never abuse `defineState` for it.
 
 ## Evals (verified API)
 
@@ -109,6 +111,26 @@ t.eventOrder()/t.eventsSatisfy()`, `turn.outputEquals()/outputMatches(schema)`,
 `t.check(...)` value assertions (`includes/equals/matches/similarity/
 satisfies`). Severity modifiers: `.gate()` (blocking) / `.soft()` /
 `.atLeast()` / `.label()`. An LLM judge is available for open-ended quality.
+
+## Diagnosing failed runs
+
+`eve dev` stdout may carry NO terminal-error reason for a failed task-mode
+(schedule) turn — the trace is the evidence: `eve traces ls` / `eve traces
+<id>` shows per-step spans, token usage, subagent calls, and the ERROR
+boundary. Remember task-mode sessions cannot park: a budget squeeze that
+prompts politely in interactive use is terminal on a cron — size unattended
+budgets for the heaviest legitimate run, and give every delegated subagent
+its own `limits` cap.
+
+## Upstream drift log (verify against installed docs before relying)
+
+Cited drift observed 2026-08 (eve 0.45→0.47) that touches facts on this page:
+tool-definition factories (`defineBashTool` et al.) removed in favor of
+`eve/tools/<name>` entrypoints (0.45.0) · persistent subagent sessions became
+the default, opt-out flag removed (0.45.0) · traces now emit for every
+audience by default, `tracePolicy` controls capture (0.46.0) · default model
+for config-less agents changed (0.47.2). The freshness protocol remains the
+authority; this log only flags where memory of this page may lag.
 
 ## Schedules
 

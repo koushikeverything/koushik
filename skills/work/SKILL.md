@@ -17,11 +17,26 @@ shipping tail and duplicates koushik's gates; see
 `${CLAUDE_PLUGIN_ROOT}/references/ce-interop.md` for the envelope contract).
 Koushik still owns the freshness protocol, runtime invariants, and commits.
 
-## 0. Scaffold when greenfield
+## 0a. Branch first — a hard gate
+
+Create the feature branch (or worktree) BEFORE implementing anything.
+Refuse to implement units on the default branch: without the branch, the
+ship stage has no reviewable PR boundary. (Learned the hard way in loop one.)
+
+## 0b. Scaffold when greenfield
 
 No Eve yet and the plan calls for it: verify the current scaffold command via
-the freshness protocol (expect `npx eve@latest init .`), run it, and confirm
-with `eve info --json`. Never invent imports or config keys from memory.
+the freshness protocol. `eve init .` refuses non-empty directories — and a
+koushik-setup-first repo is always non-empty — so scaffold into a temp
+directory and merge the generated files in (rename the package, merge
+AGENTS.md content rather than overwriting). Never invent imports or config
+keys from memory.
+
+**Then check the resolved surface against the architecture:** run
+`eve info --json` and diff its tool list against the architecture doc's
+intended surface — scaffolds enable more built-ins than most architectures
+want (e.g. `agent` fan-out, `web_search`); disable the excess by capability
+before writing any unit.
 
 ## 1. The per-unit loop — durable, always the same
 
@@ -34,7 +49,10 @@ For each unit in dependency order:
    in skills, effects behind typed tools, authorization in code, idempotency
    before park boundaries, `disableTool()` for forbidden capability.
 3. **Validate** — tests, lint, typecheck, AND the unit's evals. Evals are
-   written alongside the unit, never after the feature.
+   written alongside the unit, never after the feature. Validation evidence
+   must be real: never pipe a gating command through a filter that masks its
+   exit code (`cmd | tail` reports tail's status, not cmd's) — check the
+   command's own status before the commit step may run.
 4. **Commit** — one clean, convention-aware commit per unit.
 5. **Tick** — mark the unit done in the plan file itself; progress lives in
    the artifact, not the chat, so any future session knows what remains.
