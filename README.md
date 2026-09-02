@@ -23,6 +23,11 @@ Development / local:
 claude --plugin-dir ./koushik
 ```
 
+(For headless `-p` runs with `--plugin-dir`, also pass
+`--add-dir ./koushik` and `--permission-mode acceptEdits` — skills read
+reference files from the plugin directory and write artifacts into the
+project, and non-interactive mode cannot ask for either permission.)
+
 Or as a marketplace:
 
 ```text
