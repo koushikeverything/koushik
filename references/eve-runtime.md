@@ -119,8 +119,12 @@ satisfies`). Severity modifiers: `.gate()` (blocking) / `.soft()` /
 <id>` shows per-step spans, token usage, subagent calls, and the ERROR
 boundary. Remember task-mode sessions cannot park: a budget squeeze that
 prompts politely in interactive use is terminal on a cron — size unattended
-budgets for the heaviest legitimate run, and give every delegated subagent
-its own `limits` cap.
+budgets for the heaviest legitimate run (INPUT and output: fetched content
+re-enters history every step, so cumulative input explodes on fetch-heavy
+runs — cap token-hungry behaviors like web_fetch in the skill), and give
+every delegated subagent its own `limits` cap. Task-mode sessions also
+don't know today's date: dates, ids, and windows are computed by tools and
+returned to the model, never requested from it.
 
 ## Upstream drift log (verify against installed docs before relying)
 
