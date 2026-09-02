@@ -55,3 +55,12 @@ eval added, and — when the lesson generalizes — route to `/koushik:compound`
 If Every's `ce-debug` is available and the incident is purely code-shaped, it
 may run the generic investigation; the layer classification above stays with
 koushik.
+
+---
+
+*Frontstage: this stage's close, every decision it puts to the user, and any
+error it reports follow `${CLAUDE_PLUGIN_ROOT}/references/frontstage.md` —
+plain-language outcomes with action types, guided decisions (meaning, why
+now, impact, recommendation, reversibility, what happens next), and an
+in-place update to the live project tracker when one exists
+(`/koushik:tracker`).*

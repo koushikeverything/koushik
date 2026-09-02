@@ -38,3 +38,12 @@ thresholds here.
 
 Report: state now `simplified`, what was removed/merged/moved with line
 counts, eval re-run evidence, route to `/koushik:review`.
+
+---
+
+*Frontstage: this stage's close, every decision it puts to the user, and any
+error it reports follow `${CLAUDE_PLUGIN_ROOT}/references/frontstage.md` —
+plain-language outcomes with action types, guided decisions (meaning, why
+now, impact, recommendation, reversibility, what happens next), and an
+in-place update to the live project tracker when one exists
+(`/koushik:tracker`).*

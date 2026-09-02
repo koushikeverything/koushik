@@ -51,7 +51,7 @@ Fifteen lifecycle states with explicit gates (see
 printing the current state and the next recommended command — you never have
 to memorize the catalog.
 
-## The 18 skills
+## The 19 skills
 
 | Command | Purpose |
 |---|---|
@@ -73,11 +73,25 @@ to memorize the catalog.
 | `/koushik:maintain` | Framework/model/permission drift; canary discipline |
 | `/koushik:compound` | Learnings → `docs/solutions/` with an enforcement mechanism |
 | `/koushik:scale` | Seven scale dimensions; autonomy treated as a security change |
+| `/koushik:tracker` | Live HTML project tracker — plain-language stage rail, decisions, learnings |
 
 Seven read-only specialist agents back the review/architecture stages:
 requirements-critic, eve-architect, agent-behavior-reviewer,
 agent-safety-reviewer, reliability-reviewer, product-experience-reviewer,
 scale-reviewer — risk-routed, never all at once.
+
+## The frontstage layer
+
+The build is backstage; what the user experiences is governed by
+`references/frontstage.md`, which every skill follows: plain-language
+outcomes with action types (🗂 planning · 🔨 building · ✅ checking ·
+🚀 shipping · 🧠 learning), jargon explained at the point of use, guided
+decisions (meaning, why now, impact, recommendation, reversibility, what
+happens next — never bare options), errors that come with a recommended
+path instead of a dead end, and a **live HTML project tracker**
+(`/koushik:tracker`) that always answers "where are we, what was built,
+what needs me, what did the system learn, what's next." Compound learnings
+are announced, not buried: "the system got smarter" is part of the product.
 
 ## Durable artifacts
 

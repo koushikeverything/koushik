@@ -47,3 +47,12 @@ scope → `/koushik:brainstorm`.
 
 Save to `docs/pulse-reports/` per artifacts.md. Report: state `observed`,
 the one-paragraph reading, the routed follow-ups.
+
+---
+
+*Frontstage: this stage's close, every decision it puts to the user, and any
+error it reports follow `${CLAUDE_PLUGIN_ROOT}/references/frontstage.md` —
+plain-language outcomes with action types, guided decisions (meaning, why
+now, impact, recommendation, reversibility, what happens next), and an
+in-place update to the live project tracker when one exists
+(`/koushik:tracker`).*

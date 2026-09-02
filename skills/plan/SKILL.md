@@ -70,3 +70,12 @@ never plan around it silently. Only then set
 Report: state now `implementation-ready`, unit count and order, top risks,
 cited prior learnings, route to `/koushik:work` (via `/koushik:lifecycle` for
 the autonomous path).
+
+---
+
+*Frontstage: this stage's close, every decision it puts to the user, and any
+error it reports follow `${CLAUDE_PLUGIN_ROOT}/references/frontstage.md` —
+plain-language outcomes with action types, guided decisions (meaning, why
+now, impact, recommendation, reversibility, what happens next), and an
+in-place update to the live project tracker when one exists
+(`/koushik:tracker`).*

@@ -50,3 +50,12 @@ skill; production deployment is `/koushik:deploy`, user-invoked only.
 Report: state `pr-ready`, PR URL, evidence summary, anything the human
 should weigh before merging, and the reminder that after merging, deployment
 is `/koushik:deploy`.
+
+---
+
+*Frontstage: this stage's close, every decision it puts to the user, and any
+error it reports follow `${CLAUDE_PLUGIN_ROOT}/references/frontstage.md` —
+plain-language outcomes with action types, guided decisions (meaning, why
+now, impact, recommendation, reversibility, what happens next), and an
+in-place update to the live project tracker when one exists
+(`/koushik:tracker`).*

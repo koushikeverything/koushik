@@ -66,3 +66,12 @@ Report: state now `reviewed` (criticals fixed or explicitly accepted),
 findings summary by severity and disposition, route behavioral-coverage gaps
 to `/koushik:eval`, root causes to `/koushik:debug`, then onward to
 `/koushik:eval`.
+
+---
+
+*Frontstage: this stage's close, every decision it puts to the user, and any
+error it reports follow `${CLAUDE_PLUGIN_ROOT}/references/frontstage.md` —
+plain-language outcomes with action types, guided decisions (meaning, why
+now, impact, recommendation, reversibility, what happens next), and an
+in-place update to the live project tracker when one exists
+(`/koushik:tracker`).*

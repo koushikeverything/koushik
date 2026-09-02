@@ -72,3 +72,12 @@ divergent lives only in this conversation.
 Report: journey summary (states traversed), PR URL and its evidence, what
 remains human (merge, then `/koushik:deploy`), and any learnings worth
 `/koushik:compound`.
+
+---
+
+*Frontstage: this stage's close, every decision it puts to the user, and any
+error it reports follow `${CLAUDE_PLUGIN_ROOT}/references/frontstage.md` —
+plain-language outcomes with action types, guided decisions (meaning, why
+now, impact, recommendation, reversibility, what happens next), and an
+in-place update to the live project tracker when one exists
+(`/koushik:tracker`).*

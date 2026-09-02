@@ -73,7 +73,7 @@ def check_plugin_root_refs(path: Path) -> None:
 EXPECTED_SKILLS = {
     'setup', 'strategy', 'brainstorm', 'architect', 'plan', 'work', 'simplify',
     'review', 'eval', 'test-drive', 'ship', 'deploy', 'lifecycle', 'pulse',
-    'debug', 'maintain', 'compound', 'scale',
+    'debug', 'maintain', 'compound', 'scale', 'tracker',
 }
 MANUAL_ONLY = {'deploy'}
 
@@ -141,6 +141,7 @@ REQUIRED_REFS = [
     'references/scale.md',
     'references/ce-interop.md',
     'references/upstream.md',
+    'references/frontstage.md',
 ]
 for rel in REQUIRED_REFS:
     if not (root / rel).is_file():

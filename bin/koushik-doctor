@@ -81,6 +81,11 @@ section "project"
 [ -f .koushik/config.yaml ] && ok ".koushik/config.yaml" || miss ".koushik/config.yaml — run /koushik:setup"
 
 section "deployment"
+if command -v vercel >/dev/null 2>&1; then
+  ok "vercel CLI $(vercel --version 2>/dev/null | head -n1 | awk '{print $3}')"
+else
+  warn "vercel CLI missing — eve link/deploy need it (npm i -g vercel@latest)"
+fi
 if [ -d .vercel ]; then ok "vercel project linked"; else warn "not linked to a deployment target (eve link)"; fi
 if [ -f .env.example ]; then
   names=$(grep -Ec '^[A-Za-z_][A-Za-z0-9_]*=' .env.example 2>/dev/null || echo 0)

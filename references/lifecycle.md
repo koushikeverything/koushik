@@ -20,6 +20,11 @@ the state machine (restated copies drift).
   or an accepted artifact already carries. When new evidence *invalidates* a
   settled decision (infeasible, wrong-thing, destructive), stop and surface it
   to the user explicitly — never silently re-decide either way.
+- **Frontstage reporting.** Every stage close, decision gate, and error
+  follows `references/frontstage.md`: plain-language outcomes with action
+  types, guided decisions (meaning, impact, recommendation, reversibility),
+  and an update to the live project tracker when one exists. The build is
+  backstage; what the user experiences is governed there.
 
 ## State machine
 

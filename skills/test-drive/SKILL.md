@@ -47,3 +47,12 @@ loop is deliberately not autonomous.
 Save the report to `docs/test-drives/` per artifacts.md: journeys driven,
 findings, fixes applied, escalations and their resolutions, what could not be
 exercised. Report: state `experienced`, route to `/koushik:ship`.
+
+---
+
+*Frontstage: this stage's close, every decision it puts to the user, and any
+error it reports follow `${CLAUDE_PLUGIN_ROOT}/references/frontstage.md` —
+plain-language outcomes with action types, guided decisions (meaning, why
+now, impact, recommendation, reversibility, what happens next), and an
+in-place update to the live project tracker when one exists
+(`/koushik:tracker`).*

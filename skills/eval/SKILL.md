@@ -48,3 +48,12 @@ approval and is recorded in the eval report with the reason.
 Save the design/summary to `docs/eval-reports/` per artifacts.md. Report:
 state `eval-green` (or exactly which gates are red and why), config recorded,
 route to `/koushik:test-drive` when green.
+
+---
+
+*Frontstage: this stage's close, every decision it puts to the user, and any
+error it reports follow `${CLAUDE_PLUGIN_ROOT}/references/frontstage.md` —
+plain-language outcomes with action types, guided decisions (meaning, why
+now, impact, recommendation, reversibility, what happens next), and an
+in-place update to the live project tracker when one exists
+(`/koushik:tracker`).*

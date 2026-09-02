@@ -56,3 +56,12 @@ never source-code choreography. Link it from the requirements artifact.
 
 Report: state now `architecture-ready`, artifact path, key decisions and their
 alternatives-rejected, unresolved risks, route to `/koushik:plan`.
+
+---
+
+*Frontstage: this stage's close, every decision it puts to the user, and any
+error it reports follow `${CLAUDE_PLUGIN_ROOT}/references/frontstage.md` —
+plain-language outcomes with action types, guided decisions (meaning, why
+now, impact, recommendation, reversibility, what happens next), and an
+in-place update to the live project tracker when one exists
+(`/koushik:tracker`).*

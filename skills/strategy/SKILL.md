@@ -49,3 +49,12 @@ as testable statements, not aspirations.
 Report: state now `strategy-ready` (or what still blocks it), the artifact
 path, unresolved product risks, and route to `/koushik:brainstorm` when a
 direction is ready.
+
+---
+
+*Frontstage: this stage's close, every decision it puts to the user, and any
+error it reports follow `${CLAUDE_PLUGIN_ROOT}/references/frontstage.md` —
+plain-language outcomes with action types, guided decisions (meaning, why
+now, impact, recommendation, reversibility, what happens next), and an
+in-place update to the live project tracker when one exists
+(`/koushik:tracker`).*
