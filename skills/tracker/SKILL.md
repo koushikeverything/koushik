@@ -51,7 +51,13 @@ Sections, in order:
    the system improves itself.
 6. **Next** — the recommended next action; whether it needs the user; the
    remaining path to a usable, deployed product in a few plain steps.
-7. **Footer** — last-updated timestamp (system clock) and links to the
+7. **Command guide** — a compact, collapsed-by-default section ("Which
+   command when?") listing every `/koushik:` command grouped by phase
+   (Getting started · Defining · Building · Checking · Shipping · Running
+   live · Anytime), each with a one-line plain-language "use this when…".
+   Derive it from lifecycle.md's catalog — never hand-maintain a second
+   copy — and highlight the row matching the recommended next action.
+8. **Footer** — last-updated timestamp (system clock) and links to the
    deep artifacts (strategy, plan, reports) for technical readers.
 
 ## 3. Update discipline
