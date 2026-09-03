@@ -75,7 +75,7 @@ EXPECTED_SKILLS = {
     'review', 'eval', 'test-drive', 'ship', 'deploy', 'lifecycle', 'pulse',
     'debug', 'maintain', 'compound', 'scale', 'tracker',
 }
-MANUAL_ONLY = {'deploy'}
+MANUAL_ONLY = {'deploy', 'lifecycle'}
 
 skill_names: set[str] = set()
 for path in sorted((root / 'skills').glob('*/SKILL.md')):

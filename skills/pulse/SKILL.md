@@ -16,7 +16,9 @@ access would unlock them — never invent metrics.
 ## 1. Gather what actually exists
 
 `eve logs` / `eve traces`, platform monitoring, app telemetry, error
-tracking, user feedback channels. Use only real sources; state gaps.
+tracking, user feedback channels — and for model spend, the AI Gateway
+usage view on the linked platform project (don't infer cost when the
+meter exists). Use only real sources; state gaps.
 
 ## 2. Read the agent-shaped signals
 

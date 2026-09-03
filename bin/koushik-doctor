@@ -30,9 +30,9 @@ if command -v node >/dev/null 2>&1; then
   nodev=$(node --version 2>/dev/null | sed 's/^v//')
   major=${nodev%%.*}
   ok "node $nodev"
-  # Eve currently documents a recent-Node requirement; verify against installed eve docs.
-  if [ "${major:-0}" -lt 20 ]; then
-    warn "node major $major is old — check the installed eve package's engine requirement"
+  # Eve's engines field requires Node 24+ (verify against installed eve docs on upgrade).
+  if [ "${major:-0}" -lt 24 ]; then
+    warn "node major $major is below eve's documented requirement (24+)"
   fi
 else
   miss "node not installed"

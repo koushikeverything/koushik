@@ -36,7 +36,10 @@ Eliminate suspects by experiment, not plausibility.
 Requirement ambiguity · instructions/skill routing · model reasoning ·
 custom tool logic · connection/auth/approval · subagent delegation · sandbox
 · durable session/state/resume · long-term memory · channel identity/delivery
-· schedule/concurrency · external dependency · observability gap. The layer
+· schedule/concurrency · external dependency · observability gap ·
+**duplicate actor** (a second session/process working the same repo under
+the same identity — unexplained commits, PRs, or state changes; check for
+concurrent sessions before assuming the runtime did it). The layer
 determines which evidence matters. (Signature class: side-effect identity
 created inside a resumable step — one approval, two effects.)
 
