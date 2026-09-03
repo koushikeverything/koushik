@@ -36,6 +36,12 @@ Beyond generic product metrics, specifically:
 Every number is read against what STRATEGY.md says success means. Facts and
 hypotheses are labeled as such.
 
+**Also grade the last deployment's watch-list:** open the most recent
+`docs/deployments/` record and explicitly revisit every known-limitation and
+watch item it recorded — each one gets a verdict (resolved / still watching /
+worsened) in this pulse. Watch items that nobody re-reads are how small
+oddities become incidents.
+
 ## 4. Route the findings
 
 Smallest next investigation named explicitly. Breakage → `/koushik:debug`.

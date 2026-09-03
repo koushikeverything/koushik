@@ -50,3 +50,7 @@ Prompt-only enforcement of a critical rule is an automatic review finding.
 - `defineState` holding user preferences → move to the external memory store.
 - A prompt sentence saying "never do X" with the X capability still enabled →
   disable the capability (`disableTool()` / narrower scopes).
+- A run-claim/overlap marker released only on success → a crashed run's
+  marker blocks honest retries for the whole staleness window (it bit twice
+  in one incident). Release the claim on terminal failure too, or size the
+  staleness window to the retry cadence — never to the schedule cadence.

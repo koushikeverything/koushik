@@ -41,15 +41,26 @@ Declined or unanswered → stop, leaving everything recorded and ready.
 
 ## 4. Deploy, verify, monitor
 
-After approval: execute only the agreed scope. Immediately smoke-test the
-critical paths on the deployed version. Hold a short monitoring window
-against the abort thresholds; breach → execute the rollback mechanism and
-report honestly.
+After approval: execute only the agreed scope. Then verify — and a health
+check plus a trivial smoke is NOT verification. **Post-deploy verification
+must exercise the primary user journey end to end on the deployed
+infrastructure, to durable completion.** For a scheduled agent that means
+triggering the schedule route once (with whatever header/auth the platform's
+own invoker sends) and watching the app's own store/output until the run's
+real artifact lands — dev-verified is not production-verified: budgets,
+windows, and infrastructure all differ. (Learned in production: a deploy
+"verified" by health + Q&A smoke shipped a broken core promise for 48h.)
+Hold a short monitoring window against the abort thresholds; breach →
+execute the rollback mechanism and report honestly.
 
 ## 5. Record
 
 Write `docs/deployments/<date>-<name>.md` and create/update the runbook
-(disable path, rollback, kill switch, owner) per artifacts.md.
+(disable path, rollback, kill switch, owner) per artifacts.md. The runbook
+must also capture the platform's trigger-and-verify mechanics discovered
+during verification — the exact schedule/trigger route (and whether it
+rotates per deployment), required headers, and how to read the ground-truth
+store — so the next incident responder doesn't rediscover them.
 
 ## Close
 

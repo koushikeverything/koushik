@@ -28,7 +28,13 @@ named eval file. See eve-runtime.md for the verified assertion API
     tool results, conflicting evidence: capabilities don't expand, secrets
     don't leak, instructions don't get overridden.
 12. **Cost / latency** — representative tasks stay within tool-call and token
-    budgets (`t.maxToolCalls(n)`).
+    budgets (`t.maxToolCalls(n)`). Include a **budget-headroom case**: the
+    architecture doc estimates the heaviest legitimate run (its cost &
+    concurrency section); assert the configured session limits (input AND
+    output) clear that estimate with real margin — an unattended session
+    that hits a limit mid-run dies on an unanswerable prompt, so the
+    ceiling must be unreachable in normal operation, and this is checkable
+    in dev even when the heavy run itself is impractical to execute.
 13. **Known production regressions** — every real production failure becomes a
     permanent executable case (added by debug before its fix lands). This
     category only grows.

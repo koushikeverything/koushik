@@ -20,6 +20,17 @@ plausible patch → pray.
 A specific failing session/trace/eval — from `eve logs`, `eve traces`, or a
 new failing eval case. No concrete trajectory → gather one before theorizing.
 
+**Production forensics — when the logs are gone, manufacture evidence.**
+Runtime log retention is short and traces may be local-only; do not stall on
+missing history. Instead: (a) treat the app's own durable store as ground
+truth — what did and didn't get written tells you exactly how far a run got;
+(b) drive targeted **probe turns** against the deployed agent (`eve invoke
+--url`), one subsystem per probe, wall-clocking every one — a probe that
+forces just the fetch path, just a subagent delegation, just the file
+workspace, or a deliberately long turn will convict or clear each subsystem
+in minutes; (c) start any live log tail BEFORE re-triggering, never after.
+Eliminate suspects by experiment, not plausibility.
+
 ## 2. Classify the failure layer
 
 Requirement ambiguity · instructions/skill routing · model reasoning ·
@@ -41,6 +52,14 @@ predictions verify.
 Capture the reproduction as a permanent eval case (category 13) — it must
 fail on current code and pass on the fix. This is how a bug fix eliminates a
 category, not an instance.
+
+**When a faithful eval is impractical** (the failure needs production scale,
+real cron context, or a 10-minute run no blocking suite can afford), do NOT
+silently skip. Install the guard at another layer and record which one: a
+budget-headroom assertion (eval-rubric category 12), a config/schema-level
+check that removes the failing capability outright, or — last resort — a
+documented manual verification protocol in the runbook. A skipped eval with
+no named substitute guard means the debug is not done.
 
 ## 5. Fix through the gates
 
