@@ -63,8 +63,11 @@ it and why), decisions waiting on the user, recommended next action, and
 distance to a usable product. Update it BEFORE ending the turn, so the page
 is never behind the conversation.
 
-No tracker exists → close reports still follow this contract in chat, and
-setup/lifecycle offer to create one (never force it).
+The tracker is **default-on**: setup creates it as part of preparing a
+project, and lifecycle creates it on first run when missing — declining is
+the user's opt-out, respected without argument. If none exists (declined,
+or a pre-flip project), close reports still follow this contract in chat,
+and any skill may re-offer creation when the user seems lost.
 
 ## Communicating compound (the learning layer)
 

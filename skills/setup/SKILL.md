@@ -44,17 +44,28 @@ Create or update `.koushik/config.yaml` (never secrets):
   (doctor reports this). Mark `optional` either way.
 - `docs_root` if the user relocates artifacts.
 
-## 5. Do not overreach
+## 5. Create the live project tracker — by default
+
+Create the tracker page per the `tracker` skill's page contract and record
+its location in `.koushik/config.yaml` — **default ON**: declining is the
+opt-out ("skip the tracker" respected, never argued with), not creation the
+opt-in. A fresh project's tracker honestly shows: stage `idea`, nothing
+built yet, next command `/koushik:strategy`. From here on, every stage keeps
+it current, and the user can open it (or run `/koushik:tracker`) at any
+moment to see what happened and what's happening.
+
+## 6. Do not overreach
 
 Setup never installs Eve (work scaffolds it when the plan calls for it),
 never deploys, and never modifies application code.
 
-## 6. Close
+## 7. Close
 
 Report: doctor summary, repo classification, agent-native level, what was
-created vs already present, the current lifecycle state per lifecycle.md's
-state machine, and the next recommended command (usually `/koushik:strategy`
-for a fresh project, or wherever state detection points).
+created vs already present (including the tracker's location), the current
+lifecycle state per lifecycle.md's state machine, and the next recommended
+command (usually `/koushik:strategy` for a fresh project, or wherever state
+detection points).
 
 ---
 
