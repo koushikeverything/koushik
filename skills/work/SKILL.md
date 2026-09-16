@@ -1,6 +1,6 @@
 ---
 name: work
-description: "Implement an implementation-ready durable-agent plan in the actual repository: scaffold Eve when greenfield, author agent instructions, skills, tools, connections, subagents, channels, schedules, state and memory integration, application code, tests, and evals — one validated unit at a time with durable progress. Use after plan flips to implementation-ready. Not for planning (plan) or cleanup (simplify)."
+description: "Implement an implementation-ready durable-agent plan in the actual repository: scaffold Eve when greenfield, author agent instructions, skills, tools, connections, subagents, channels, schedules, state and memory integration, application code, tests, and evals — one validated unit at a time with durable progress. Use after plan flips to implementation-ready. Not for planning (plan) or cleanup (simplify). Not for implementing a small Claude-ecosystem artifact — an MCP server, Agent Skill, or plugin (koushik-jr plugin)."
 argument-hint: "[implementation-ready plan path or U-ID range]"
 ---
 
