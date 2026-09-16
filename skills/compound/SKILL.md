@@ -1,6 +1,6 @@
 ---
 name: compound
-description: "Preserve reusable learnings from building, reviewing, debugging, or operating a durable agent so the next loop starts smarter: solution notes in docs/solutions/ with an enforcement mechanism, vocabulary in CONCEPTS.md, and a promotion ladder for recurring lessons. Also maintains the solution corpus itself (refresh mode). Use after a non-trivial problem is solved or a durable pattern emerges. Never for trivia."
+description: "Preserve reusable learnings from building, reviewing, debugging, or operating a durable agent so the next loop starts smarter: solution notes in docs/solutions/ with an enforcement mechanism, vocabulary in CONCEPTS.md, and a promotion ladder for recurring lessons. Also maintains the solution corpus itself (refresh mode). Use after a non-trivial problem is solved or a durable pattern emerges. Never for trivia. Not for lessons from building a small Claude-ecosystem artifact — an MCP server, Agent Skill, or plugin (koushik-jr plugin)."
 argument-hint: "[resolved problem or learning | refresh]"
 ---
 

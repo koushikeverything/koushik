@@ -1,6 +1,6 @@
 ---
 name: review
-description: "Risk-selected multi-agent review of a durable agent change: correctness always, plus behavior, safety, reliability, experience, and scale lenses routed by what the diff touches; P0–P3 findings with evidence, auto-fix of eligible findings, and a --triage mode for judgment calls. Also reviews requirements/architecture documents (doc-review). Use after simplify, or on any diff/branch/PR/document. Not for running evals (eval) or experiencing the product (test-drive)."
+description: "Risk-selected multi-agent review of a durable agent change: correctness always, plus behavior, safety, reliability, experience, and scale lenses routed by what the diff touches; P0–P3 findings with evidence, auto-fix of eligible findings, and a --triage mode for judgment calls. Also reviews requirements/architecture documents (doc-review). Use after simplify, or on any diff/branch/PR/document. Not for running evals (eval) or experiencing the product (test-drive). Not for reviewing a small Claude-ecosystem artifact, where the lenses are spec compliance, triggering quality, and artifact security (koushik-jr plugin)."
 argument-hint: "[diff|branch|PR|document path] [--triage]"
 ---
 

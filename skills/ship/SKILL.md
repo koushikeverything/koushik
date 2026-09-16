@@ -1,6 +1,6 @@
 ---
 name: ship
-description: "Take a reviewed, eval-green, test-driven change to a READY-TO-MERGE pull request: final verification, clean commits, push, a PR carrying its eval and test-drive evidence, then bounded CI and review-feedback shepherding. Stops at ready-to-merge — merging is the human's act, and production deployment is the separate /koushik:deploy skill. Not for deploying (deploy)."
+description: "Take a reviewed, eval-green, test-driven change to a READY-TO-MERGE pull request: final verification, clean commits, push, a PR carrying its eval and test-drive evidence, then bounded CI and review-feedback shepherding. Stops at ready-to-merge — merging is the human's act, and production deployment is the separate /koushik:deploy skill. Not for deploying (deploy). Not for packaging a small Claude-ecosystem artifact — an MCP server, Agent Skill, plugin, or connector solution (koushik-jr plugin)."
 argument-hint: "[branch or blank for current]"
 ---
 

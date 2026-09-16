@@ -1,6 +1,6 @@
 ---
 name: tracker
-description: "Create or refresh the live HTML project tracker — a plain-language, continuously updated view of where the build stands: stage rail, what each stage produced and why, decisions waiting on the user, what the system has learned, recommended next action, and distance to a usable product. Use to answer 'where are we?', after any stage completes, or when starting a project. Not a build stage — a window onto them."
+description: "Create or refresh the live HTML project tracker for a DURABLE AGENT build (Eve): a plain-language, continuously updated view of where the agent stands on the 15-state rail — what each stage produced and why, decisions waiting on the user, what the system has learned, recommended next action, and distance to a deployed agent. Use to answer 'where are we?' on an agent or Eve project, after any stage completes, or when starting one. Not a build stage — a window onto them. Not for tracking a small Claude-ecosystem artifact build — an MCP server, Agent Skill, or plugin (koushik-jr plugin)."
 argument-hint: "[blank to create/refresh, or a question about status]"
 ---
 
